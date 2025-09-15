@@ -1,16 +1,16 @@
 swagger: '2.0'
 info:
-  title: Proxy API for Company Name
-  description: Returns only job role (company name) by employee ID
+  title: JSONPlaceholder Job Role API
+  description: Returns user data including company (job role) by employee ID
   version: '1.0'
-host: your-proxy-host.com
+host: jsonplaceholder.typicode.com
 schemes:
   - https
 basePath: /
 paths:
   /users/{employeeId}:
     get:
-      summary: Get job role by employee ID
+      summary: Get user by employee ID
       parameters:
         - name: employeeId
           in: path
@@ -18,11 +18,14 @@ paths:
           type: string
       responses:
         200:
-          description: Response containing job role string
+          description: Full user object response (including company)
           schema:
             type: object
             properties:
-              jobRole:
-                type: string
+              company:
+                type: object
+                properties:
+                  name:
+                    type: string
         default:
           description: Error response
