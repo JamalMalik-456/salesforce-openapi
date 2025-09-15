@@ -21,9 +21,11 @@ paths:
           description: Full user object response (including company)
           schema:
             type: object
+            required: [company]
             properties:
               company:
                 type: object
+                required: [name]
                 properties:
                   name:
                     type: string
