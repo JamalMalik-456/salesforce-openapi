@@ -1,0 +1,74 @@
+swagger: '2.0'
+info:
+  title: JSONPlaceholder User API
+  description: API to retrieve user job role (company name) by employee ID
+  version: '1.0'
+host: jsonplaceholder.typicode.com
+schemes:
+  - https
+basePath: /
+paths:
+  /users/{employeeId}:
+    get:
+      summary: Get user details by employee ID
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/User'
+        default:
+          description: Error response
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      username:
+        type: string
+      email:
+        type: string
+      address:
+        $ref: '#/definitions/Address'
+      phone:
+        type: string
+      website:
+        type: string
+      company:
+        $ref: '#/definitions/Company'
+  Address:
+    type: object
+    properties:
+      street:
+        type: string
+      suite:
+        type: string
+      city:
+        type: string
+      zipcode:
+        type: string
+      geo:
+        $ref: '#/definitions/Geo'
+  Geo:
+    type: object
+    properties:
+      lat:
+        type: string
+      lng:
+        type: string
+  Company:
+    type: object
+    properties:
+      name:
+        type: string
+      catchPhrase:
+        type: string
+      bs:
+        type: string
